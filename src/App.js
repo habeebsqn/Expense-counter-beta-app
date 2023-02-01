@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Expenses from "./components/Expenses";
 import NewExpense from "./components/NewExpense";
 
@@ -27,16 +27,39 @@ const initialExpenses = [
 
 function App() {
   const [expensesList, setexpensesList] = useState(initialExpenses);
+  const [addAlert, setAddAlert] = useState(false);
 
   const onAddNewExpenseHandler = (newExpense) => {
     setexpensesList((PrevExpenses) => [newExpense, ...PrevExpenses]);
+    setAddAlert(true);
   };
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAddAlert(false);
+    }, 1500);
+
+    return () => {
+      clearTimeout(timer);
+    };
+  }, [expensesList]);
 
   return (
     <div>
-      <h2>Let's get started!</h2>
+      <h2 style={{ textAlign: "center", color: "#f8dfff" }}>
+        BETA EXPENSE COUNTER APP
+      </h2>
       <NewExpense onAddNewExpense={onAddNewExpenseHandler} />
-
+      {addAlert && (
+        <h2
+          style={{
+            textAlign: "center",
+            color: "#f8dfff",
+            //animation: "bump 300ms ease-out",
+          }}
+        >
+          EXPENSE ADDED!
+        </h2>
+      )}
       <Expenses items={expensesList} />
     </div>
   );

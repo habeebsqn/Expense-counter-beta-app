@@ -5,6 +5,7 @@ function ExpenseForm(props) {
   const [enteredTitle, setEnteredTitle] = useState("");
   const [enteredPrice, setEnteredPrice] = useState("");
   const [enteredDate, setEnteredDate] = useState("");
+  //const [formIsValid, setFormIsValid] = useState("");
 
   //const [UserInput, setUserInput] = useState({
   // enteredTtile: "",
@@ -32,6 +33,17 @@ function ExpenseForm(props) {
     //application to load again and allow us to use javascript to set the initiation period
     event.preventDefault();
 
+    // if (
+    //   enteredTitle.trim() === "" ||
+    //   enteredPrice === "" ||
+    //   enteredDate === ""
+    // ) {
+    //   setFormIsValid(false);
+    //   return;
+    // }
+
+    // setFormIsValid(true);
+
     const expenseData = {
       title: enteredTitle,
       amount: +enteredPrice,
@@ -53,6 +65,7 @@ function ExpenseForm(props) {
           <label>Title</label>
           <input
             type="text"
+            required
             value={enteredTitle}
             onChange={titleChangeHandler}
           />
@@ -63,6 +76,7 @@ function ExpenseForm(props) {
             type="number"
             min="0.01"
             step="0.01"
+            required
             value={enteredPrice}
             onChange={priceChangeHandler}
           />
@@ -73,6 +87,7 @@ function ExpenseForm(props) {
             type="date"
             min="2019-01-01"
             max="2022-12-31"
+            required
             value={enteredDate}
             onChange={dateChangeHandler}
           />

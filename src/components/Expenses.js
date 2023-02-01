@@ -16,8 +16,6 @@ const Expenses = (props) => {
     return expense.date.getFullYear().toString() === updateSelectedYear;
   });
 
-  console.log(filteredExpenses);
-
   /*basically the jsx code here is recieving data from app.js via "props",
   to be specific its recieving the expenses items and their property to 
   pass them to each expenseitem component */

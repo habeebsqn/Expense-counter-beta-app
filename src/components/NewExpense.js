@@ -12,6 +12,7 @@ function NewExpense(props) {
     };
     props.onAddNewExpense(NewExpense);
     //console.log(NewExpense);
+
     setExpand(false);
   };
 
@@ -27,7 +28,7 @@ function NewExpense(props) {
     <div className="new-expense">
       {!Expand && (
         <button type="button" onClick={expandHandler}>
-          .Add new Expense
+          Add new Expense
         </button>
       )}
       {Expand && (
